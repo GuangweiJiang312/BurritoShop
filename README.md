@@ -12,7 +12,7 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the Repository:**
    ```bash
-   git clone [your-repo-url]
+   git clone https://github.com/GuangweiJiang312/BurritoShop.git
    cd BurritoShop
    ```
 2. **Build the Docker Image:**
@@ -41,7 +41,7 @@ Before you begin, ensure you have the following installed:
    docker run --network burrito-network -p 3000:3000 -d burrito-shop-api
    ```
 7. **Verify the Application:**
-- The API should now be accessible at http://localhost:3000.
+- The API should now be accessible at http://127.0.0.1:3000.
 
 ## Testing the API
 To run the Jest test suite, follow these steps:
@@ -64,7 +64,7 @@ To run the Jest test suite, follow these steps:
 ## Using the API
 To use the protected endpoints, include an API key in the request header:
    ```
-   curl -X GET http://localhost:3000/api/orders -H "x-api-key: mysecretapikey"
+   curl -X GET http://127.0.0.1:3000/api/orders -H "x-api-key: mysecretapikey"
    ```
 
 ## Troubleshooting

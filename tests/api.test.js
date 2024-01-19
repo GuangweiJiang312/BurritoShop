@@ -1,6 +1,6 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
-const app = require('../server'); // Import your Express app
+const app = require('../server');
 const Order = require('../models/order');
 
 //Testing /api/burrito Endpoint
@@ -9,7 +9,7 @@ describe('/api/burrito', () => {
         const res = await request(app).get('/api/burrito');
         expect(res.statusCode).toEqual(200);
         expect(res.body).toBeInstanceOf(Array);
-        // Add more assertions as necessary
+        
     });
 });
 
@@ -20,12 +20,12 @@ describe('/api/orders', () => {
 
     // Setup: Run before each test in this block
     beforeEach(async () => {
-        // Setup logic (if needed)
+        
     });
 
     // Teardown: Run after each test in this block
     afterEach(async () => {
-        // Cleanup logic (if needed)
+        
         if (createdOrderId) {
             await Order.findByIdAndDelete(createdOrderId);
         }
@@ -37,7 +37,7 @@ describe('/api/orders', () => {
             .set('x-api-key', 'mysecretapikey');
         expect(res.statusCode).toEqual(200);
         expect(res.body).toBeInstanceOf(Array);
-        // Additional assertions can be added here
+        
     });
 
     it('should create a new order', async () => {
@@ -52,7 +52,7 @@ describe('/api/orders', () => {
             send(newOrder);
         expect(res.statusCode).toEqual(200);
         expect(res.body).toHaveProperty('_id');
-        // Additional assertions for order properties
+        
 
         // Save created order ID for cleanup
         createdOrderId = res.body._id;
@@ -68,14 +68,13 @@ describe('/api/orders', () => {
 //Testing /api/orders/:id Endpoint
 describe('/api/orders/:id', () => {
     it('should return details of a specific order', async () => {
-        const orderId = '65a76d285082865064333e5f'; // Replace with an actual order ID
+        const orderId = '65a76d285082865064333e5f'; 
         const res = await request(app)
             .get(`/api/orders/${orderId}`)
             .set('x-api-key', 'mysecretapikey');
         expect(res.statusCode).toEqual(200);
         expect(res.body).toHaveProperty('_id', orderId);
-        // Replace '{orderId}' with an actual order ID
-        // Additional assertions as needed
+        
     });
 });
 

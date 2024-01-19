@@ -2,15 +2,11 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.use(express.json()); // Middleware to parse JSON bodies
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send('Burrito Shop API');
 });
-
-// app.listen(port, () => {
-//     console.log(`Server running at h ttp://localhost:${port}`);
-// }); //
 
 const mongoose = require('mongoose');
 
@@ -59,7 +55,7 @@ app.post('/api/orders', authenticateApiKey, async (req, res) => {
     try {
         let order = new Order({
             items: req.body.items,
-            totalCost: req.body.totalCost // You can also calculate this on the server side
+            totalCost: req.body.totalCost 
         });
 
         order = await order.save();
